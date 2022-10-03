@@ -1,5 +1,8 @@
 package com.admin;
 
-public interface LoginAuthenticationDao {
+import com.admin.entities.ValidatedLoginAuthentication;
+import io.vavr.control.Try;
 
+public interface LoginAuthenticationDao {
+    Try<String> loginAuthentication(ValidatedLoginAuthentication validatedLoginAuthentication);
 }

@@ -18,6 +18,6 @@ public record LoginAuthenticationController(LoginAuthenticationService loginServ
                                             ErrorHandler errorHandler) {
     @PostMapping(value = "/")
     public ResponseEntity<LoginAuthenticationResponse> loginAuthentication(@RequestBody LoginAuthenticationRequest request){
-        return loginService.
+        return null;
     }
 }
