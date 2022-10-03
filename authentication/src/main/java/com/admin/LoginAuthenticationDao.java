@@ -5,4 +5,5 @@ import io.vavr.control.Try;
 
 public interface LoginAuthenticationDao {
     Try<String> loginAuthentication(ValidatedLoginAuthentication validatedLoginAuthentication);
+    Try<Boolean> isExistedUsername(String username);
 }

@@ -1,4 +1,4 @@
-package com.admin.orm;
+package com.admin.authentication.dao.orm;
 
 import lombok.*;
 
@@ -21,7 +21,7 @@ public class Authentication {
     public static final String COLUMN_PASSWORD_NAME = "password";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = COLUMN_ID_NAME, nullable = false)
     private Integer id;
 

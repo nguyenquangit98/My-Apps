@@ -9,11 +9,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@EnableJpaRepositories("com.admin.authentication")
-@EntityScan("com.admin.authentication.orm")
-@ComponentScan("com.admin.authentication")
+@EnableJpaRepositories("com.admin.authentication.dao")
+@EntityScan("com.admin.authentication.dao.orm")
+@ComponentScan("com.admin.authentication.dao")
 public class AuthenticationConfiguration {
-
     @Bean
     public LoginAuthenticationService loginAuthenticationService(LoginAuthenticationDao loginAuthenticationDao) {
         return new LoginAuthenticationService(loginAuthenticationDao);
