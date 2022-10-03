@@ -14,7 +14,7 @@ public class ResponseObject<T> {
     Map<String, String> errors;
 
     public static <T> ResponseObject<T> of(T data) {
-        return new ResponseObject<>(data,null, Map.of());
+        return new ResponseObject<>(data,"success", Map.of());
     }
 
     public static <T> ResponseObject<T> error(String message) {

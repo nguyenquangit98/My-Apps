@@ -7,5 +7,24 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+keycloak:
+  realm: master
+  auth-server-url: http://localhost:8080/admin
+  ssl-required: none
+  resource: my-apps
+  use-resource-role-mappings: true
+  bearer-only: true
+  credentials:
+    secret: vXyOhNDYcm3DQKBsaZeY24wSDTQ11xeN
+    grant_type: password
+    provider: secret
+    scope: openid
+
+custom-keycloak:
+  admin-client: admin-cli
+  admin-client-user: my-admin
+  admin-client-secret: 12345678
+
 server:
   port: 8088

@@ -17,4 +17,5 @@ public class AuthenticationConfiguration {
     public LoginAuthenticationService loginAuthenticationService(LoginAuthenticationDao loginAuthenticationDao) {
         return new LoginAuthenticationService(loginAuthenticationDao);
     }
+
 }
