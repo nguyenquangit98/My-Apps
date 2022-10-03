@@ -36,5 +36,4 @@
             <artifactId>mockito-inline</artifactId>
         </dependency>
     </dependencies>
-
 </project>
