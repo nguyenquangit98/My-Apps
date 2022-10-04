@@ -3,18 +3,22 @@ package com.admin.entities;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import java.util.Map;
+
 @Getter
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ResponseObject<T> {
+
     T data;
     String message;
     Map<String, String> errors;
 
+    public static final String MESSAGE_SUCCESS = "success";
+
     public static <T> ResponseObject<T> of(T data) {
-        return new ResponseObject<>(data,"success", Map.of());
+        return new ResponseObject<>(data,MESSAGE_SUCCESS, Map.of());
     }
 
     public static <T> ResponseObject<T> error(String message) {

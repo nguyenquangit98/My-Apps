@@ -11,6 +11,7 @@
         <module>../authentication-dao</module>
         <module>../routing</module>
         <module>../core</module>
+        <module>../keycloak</module>
     </modules>
 
     <parent>
@@ -38,6 +39,10 @@
         <configuration-processor.version>2.7.3</configuration-processor.version>
         <java-jwt.version>4.0.0</java-jwt.version>
         <gson.version>2.9.0</gson.version>
+        <google-guava.version>31.0.1-jre</google-guava.version>
+        <jwks-rsa.version>0.20.0</jwks-rsa.version>
+        <restassured.dependencies.version>4.4.0</restassured.dependencies.version>
+
     </properties>
 
     <dependencyManagement>
@@ -91,9 +96,29 @@
                 <version>${java-jwt.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>jwks-rsa</artifactId>
+                <version>${jwks-rsa.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google-guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${restassured.dependencies.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>xml-path</artifactId>
+                <version>${restassured.dependencies.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
