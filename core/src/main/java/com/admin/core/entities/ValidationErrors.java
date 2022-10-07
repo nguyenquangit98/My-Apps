@@ -1,4 +1,4 @@
-package com.admin.entities;
+package com.admin.core.entities;
 
 import java.util.List;
 import java.util.stream.Collectors;

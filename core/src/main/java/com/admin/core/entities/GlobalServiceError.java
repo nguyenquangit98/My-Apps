@@ -1,4 +1,4 @@
-package com.admin.entities;
+package com.admin.core.entities;
 
 
 public sealed interface GlobalServiceError permits DatabaseConnectionError, ValidationErrors{

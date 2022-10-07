@@ -1,6 +1,7 @@
 package com.admin.entities;
 
 import com.admin.LoginAuthenticationDao;
+import com.admin.core.entities.ValidationErrors;
 import io.vavr.collection.Seq;
 import io.vavr.control.Validation;
 

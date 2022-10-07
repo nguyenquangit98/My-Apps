@@ -1,11 +1,11 @@
 package com.admin.validator;
 
 import com.admin.LoginAuthenticationDao;
-import com.admin.entities.ValidationError;
+import com.admin.core.entities.ValidationError;
 import io.vavr.control.Validation;
 import org.apache.commons.lang3.StringUtils;
 
-import static com.admin.entities.ErrorMessage.*;
+import static com.admin.core.entities.ErrorMessage.*;
 
 public class AuthenticationValidator {
 

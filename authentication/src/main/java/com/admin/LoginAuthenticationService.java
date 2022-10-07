@@ -1,7 +1,7 @@
 package com.admin;
 
-import com.admin.entities.DatabaseConnectionError;
-import com.admin.entities.GlobalServiceError;
+import com.admin.core.entities.DatabaseConnectionError;
+import com.admin.core.entities.GlobalServiceError;
 import com.admin.entities.UnvalidatedLoginAuthenticationRequest;
 import com.admin.entities.ValidatedLoginAuthentication;
 import io.vavr.control.Validation;

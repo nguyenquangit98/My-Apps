@@ -1,4 +1,4 @@
-package com.admin.configuration;
+package com.admin.configuration.authentication;
 
 import com.admin.LoginAuthenticationDao;
 import com.admin.LoginAuthenticationService;
@@ -12,7 +12,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("com.admin.authentication.dao")
 @EntityScan("com.admin.authentication.dao.orm")
 @ComponentScan("com.admin.authentication.dao")
-
 public class AuthenticationConfiguration {
     @Bean
     public LoginAuthenticationService loginAuthenticationService(LoginAuthenticationDao loginAuthenticationDao) {

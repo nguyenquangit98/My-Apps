@@ -1,4 +1,4 @@
-package com.admin.entities;
+package com.admin.core.entities;
 
 public class ErrorMessage {
     public static final String ERROR_GLOBAL_UNKNOWN = "error.global.unknown";
