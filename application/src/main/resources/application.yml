@@ -15,11 +15,7 @@ keycloak:
   resource: my-apps
   use-resource-role-mappings: true
   bearer-only: true
-  credentials:
-    secret: vXyOhNDYcm3DQKBsaZeY24wSDTQ11xeN
-    grant_type: password
-    provider: secret
-    scope: openid
+  client-secret: vXyOhNDYcm3DQKBsaZeY24wSDTQ11xeN
 
 custom-keycloak:
   admin-client: admin-cli

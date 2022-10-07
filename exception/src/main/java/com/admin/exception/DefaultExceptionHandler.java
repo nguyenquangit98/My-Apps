@@ -3,6 +3,7 @@ package com.admin.exception;
 import com.admin.core.entities.DatabaseConnectionError;
 import com.admin.core.entities.ResponseObject;
 import com.admin.exception.entities.*;
+import io.vavr.control.Try;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,7 +17,7 @@ public record DefaultExceptionHandler(MessageService messageService, ErrorHandle
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionResponses> handleException() {
-        return messageService.getMessage(INTERNAL_SERVER_ERROR.getMessage(), null, LocaleContextHolder.getLocale())
+        return Try.ofSupplier( () -> messageService.getMessage(INTERNAL_SERVER_ERROR.getMessage(), null, LocaleContextHolder.getLocale()))
                 .toValidation(DatabaseConnectionError::new)
                 .map(message -> new ExceptionResponse(INTERNAL_SERVER_ERROR.getCode(), message))
                 .map(ResponseObject::of)
@@ -39,7 +40,7 @@ public record DefaultExceptionHandler(MessageService messageService, ErrorHandle
     }
 
     private ResponseEntity<ExceptionResponses> getExceptionResponsesResponseEntity(ExceptionCode exceptionCode, Object[] args) {
-        return messageService.getMessage(exceptionCode.getMessage(), args, LocaleContextHolder.getLocale())
+        return Try.ofSupplier(() -> messageService.getMessage(exceptionCode.getMessage(), args, LocaleContextHolder.getLocale()))
                 .toValidation(DatabaseConnectionError::new)
                 .map(message -> new ExceptionResponse(exceptionCode.getCode(), message))
                 .map(ResponseObject::of)

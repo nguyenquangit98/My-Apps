@@ -1,10 +1,12 @@
-package com.admin.configuration;
+package com.admin.configuration.keycloak;
 
+import com.admin.keycloak.KeycloakService;
 import com.admin.keycloak.configuration.AccessTokenAuthenticationFailureHandler;
 import com.admin.keycloak.configuration.AccessTokenFilter;
 import com.admin.keycloak.configuration.AuthorizationAccessDeniedHandler;
 import com.admin.keycloak.configuration.KeycloakJwkProvider;
 import com.admin.keycloak.entities.JwtTokenValidator;
+import com.admin.keycloak.impl.KeycloakServiceImpl;
 import com.admin.properties.KeycloakProperties;
 import com.auth0.jwk.JwkProvider;
 import lombok.RequiredArgsConstructor;
@@ -32,12 +34,6 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class KeycloakConfiguration extends KeycloakWebSecurityConfigurerAdapter {
 
-    @Bean
-    @Override
-    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -53,14 +49,16 @@ public class KeycloakConfiguration extends KeycloakWebSecurityConfigurerAdapter 
                                 authenticationManagerBean(),
                                 authenticationFailureHandler()),
                         BasicAuthenticationFilter.class);
-        http.authorizeRequests()
-                .antMatchers("/public/**").permitAll()
-                .anyRequest()
-                .permitAll();
     }
 
     KeycloakProperties keycloakProperties = new KeycloakProperties();
     String jwkProviderUrl = keycloakProperties.getAuthServerUrl() + "/auth/realms/" + keycloakProperties.getRealm() + "/protocol/openid-connect/certs";
+
+    @Bean
+    @Override
+    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
+        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+    }
 
     @Bean
     @Override
@@ -96,5 +94,13 @@ public class KeycloakConfiguration extends KeycloakWebSecurityConfigurerAdapter 
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
         return new AuthorizationAccessDeniedHandler();
+    }
+
+    @Bean
+    public KeycloakService keycloakService() {
+        return new KeycloakServiceImpl(keycloakProperties.getRealm(),
+                keycloakProperties.getAuthServerUrl(),
+                keycloakProperties.getResource(),
+                keycloakProperties.getClientSecret());
     }
 }

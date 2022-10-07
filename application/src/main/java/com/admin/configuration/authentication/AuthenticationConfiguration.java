@@ -2,6 +2,7 @@ package com.admin.configuration.authentication;
 
 import com.admin.LoginAuthenticationDao;
 import com.admin.LoginAuthenticationService;
+import com.admin.keycloak.KeycloakService;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,8 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan("com.admin.authentication.dao")
 public class AuthenticationConfiguration {
     @Bean
-    public LoginAuthenticationService loginAuthenticationService(LoginAuthenticationDao loginAuthenticationDao) {
-        return new LoginAuthenticationService(loginAuthenticationDao);
+    public LoginAuthenticationService loginAuthenticationService(LoginAuthenticationDao loginAuthenticationDao, KeycloakService keycloakService) {
+        return new LoginAuthenticationService(loginAuthenticationDao, keycloakService);
     }
-
 }

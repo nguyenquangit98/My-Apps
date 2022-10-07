@@ -1,4 +1,4 @@
-package com.admin.configuration;
+package com.admin.configuration.routing;
 
 import org.springframework.context.annotation.ComponentScan;
 

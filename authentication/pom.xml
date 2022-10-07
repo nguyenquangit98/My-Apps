@@ -26,6 +26,12 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.admin</groupId>
+            <artifactId>keycloak</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <!-- Test lib-->
         <dependency>
             <groupId>org.mockito</groupId>

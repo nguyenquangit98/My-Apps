@@ -11,5 +11,5 @@ public class KeycloakProperties {
     private String authServerUrl;
     private String realm;
     private String resource;
-    private Map<String, Object> credentials;
+    private String clientSecret;
 }

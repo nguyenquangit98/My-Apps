@@ -1,7 +1,8 @@
 package com.admin.authentication.dao;
 
 import com.admin.LoginAuthenticationDao;
-import com.admin.entities.ValidatedLoginAuthentication;
+import com.admin.entities.LoginAuthenticationResponse;
+import com.admin.entities.ValidatedLoginAuthenticationRequest;
 import io.vavr.control.Try;
 import org.springframework.stereotype.Component;
 
@@ -10,13 +11,13 @@ public record AuthenticationDaoImpl(AuthenticationRepository repository)
         implements LoginAuthenticationDao {
 
     @Override
-    public Try<String> loginAuthentication(ValidatedLoginAuthentication validatedLoginAuthentication) {
+    public Try<LoginAuthenticationResponse> loginAuthentication(ValidatedLoginAuthenticationRequest validatedLoginAuthentication) {
         return Try.ofSupplier(() -> {
             if(repository.existsByUsernameAndPassword(validatedLoginAuthentication.username(),
                     validatedLoginAuthentication.password())){
-                return validatedLoginAuthentication.username();
+                return LoginAuthenticationResponse.builder().username(validatedLoginAuthentication.username()).build();
             }
-            return null;
+            return LoginAuthenticationResponse.builder().username("").build();
         });
     }
 

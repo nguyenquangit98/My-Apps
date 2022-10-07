@@ -1,4 +1,4 @@
-package com.admin.configuration;
+package com.admin.configuration.keycloak;
 
 import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
